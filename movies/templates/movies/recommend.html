@@ -1,0 +1,41 @@
+{% extends 'base/base.html'%}
+{% block title %}Recommendations{% endblock %}
+{% block body %}
+
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <div class="alert alert-danger">
+          <strong>Error!</strong>
+          {{message}}
+        </div>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <div class="container-fluid">
+
+    <!-- Movie list -->
+    <div class="row text-light">
+      {% if object_list %}
+        <h2 class="text-light" style="margin-bottom: 40px;">Recommendations for you</h2>
+        {% for movie in object_list %}
+          <div class="col-sm-2 col-md-2 ">
+        
+            <div class="thumbnail" style="border-radius: 22px 22px 22px 22px;">
+
+              <h4 class=" text-center">{{movie.title}}</h4>
+
+              <a  href="{% url 'movies:movie_detail' movie.pk %}">
+                <img src="{{ movie.get_image}}" class="img-fluid" style="border-radius: 22px 22px 22px 22px; width:250px">
+              </a>
+              <!-- <center><h5>{{movie.genre}}</h5></center>-->
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+  </div>
+
+{% endblock %}

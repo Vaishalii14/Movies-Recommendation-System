@@ -1,0 +1,29 @@
+{% extends 'base/base.html'%}
+{% block body %}
+
+  <h1 style ="text-align: center; color:white">My List</h1>
+  <hr>
+  <br>
+  <!-- Movie list -->
+  <div class="row">
+    {% if object_list %}
+      {% for watchlist in object_list %}
+        <div class="col-sm-2 col-md-2">
+          <div class="thumbnail">
+            <h4 style ="margin-bottom: 30px;" class="text-light">{{watchlist.movie.title}}</h4>
+            <a  href="{% url 'movies:movie_detail' watchlist.movie.pk %}">
+              <img src="{{ watchlist.movie.get_image}}" class="img-fluid">
+            </a>
+            <!-- <h5 style ="margin-top: 35px;" class="text-light">{{watchlist.movie.genre}}</h5> -->
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <div class="alert alert-danger">
+        <strong>Sorry!</strong>
+        No movies in your list.
+      </div>
+    {% endif %}
+  </div>
+
+{% endblock %}

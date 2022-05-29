@@ -1,0 +1,125 @@
+{% extends 'base/base.html'%}
+{% block title %}
+  {{object.title}}
+{% endblock %}
+
+{% block body %}
+
+  {% if messages %}
+  <link rel="stylesheet" href="../assets/detail.css">
+    <ul class="messages">
+      {% for message in messages %}
+        <div class="alert alert-success">
+          <strong>Success!</strong>
+          {{message}}
+        </div>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <!-- Left Movie Info -->
+      <div class="col-sm-2 col-md-3">
+        <a href="#">
+          <img src="{{ object.get_image}}" class="img-fluid" style="border-radius: 22px 22px 22px 22px;">
+        </a>
+        <h2></h2>
+      </div>
+      <!-- Right Movie Info -->
+      <div class="col-sm-10 col-md-9">
+        <div class="row">
+          <h1 class="text-light">{{object.title}}</h1>
+          <h3 style="margin-bottom: 20px;" class="text-light">
+            <small>Genre :
+              {{object.genre }}
+            </small>
+          </h3>
+
+          <form class="" method="post" onsubmit="return validateForm()" name="ratingForm">
+            <div class="input-group mb-3">
+              <div class="col-lg-14">
+                <div class="star-rating text-light">
+                  <span >Rate Movie</span>
+                  <span class="fa fa-star-o" data-rating="1"></span>
+                  <span class="fa fa-star-o" data-rating="2"></span>
+                  <span class="fa fa-star-o" data-rating="3"></span>
+                  <span class="fa fa-star-o" data-rating="4"></span>
+                  <span class="fa fa-star-o" data-rating="5"></span>
+                  {% comment %} <input type="hidden" name="rating" class="rating-value" value="{{movie_rating}}"> {% endcomment %}
+                   <input type="number" name="rating" class="rating-value" value="{{movie_rating}}" max="5" min="1">
+                  {% csrf_token %}
+                </div>
+              </div>
+              <button class="btn btn-success ms-2" type="submit" name="rating_btn">Submit</button>
+
+            </div>
+
+          </form>
+
+          <form class="row" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <div class="input-group">
+                <div class="row">
+                  <div class="col-lg-14">
+                    <div class="star-rating text-light">
+
+                      {% if watchlist%}
+                        <span>
+                          In watchlist
+                        </span>
+                        <button style =" background-color: black ;color:white;"type="submit" class="btn ms-2" name="watch" value='remove'>
+                          Remove from watchlist</button>
+                      {% else %}
+                        <button type="submit" class="button" name="watch" value="add">Add to watchlist</button>
+
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+    <h1 style="margin-top: 30px; color:white">CAST AND CREW</h1>
+    <div class="row text-light">
+
+      {% for cast in object.get_cast %}
+      
+        <div class="col pt-5 ">
+          <!-- <div> -->
+            
+            <!-- class="img-thumbnail" -->
+          <img src="{{cast.profile}}" alt="img is not there"   width="200px" >
+       <h2 >
+          {{cast.name}}
+        </h2>
+          {{cast.character}}
+        <!-- </div> -->
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <script type="text/javascript">
+    function validateForm() {
+
+      var x = document
+        .forms["ratingForm"]["rating"]
+        .value[0];
+      console.log("SUBMITTED DATA===>", x)
+
+      if (x == "0") {
+        alert("Invalid Input");
+        return false;
+      }
+      return x
+    }
+  </script>
+
+{% endblock %}
