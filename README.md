@@ -93,17 +93,17 @@ To separately run the application on your local host,run the following command:
 ### Login 
 Registered Users can login into their account using the username and password and can start rating the movies and then get recommendations.
 
-<img src="Images/Login-Screen.png" alt="login screen" width="700"/>
+<img src="images/login-screen.png" alt="login screen" width="700"/>
  
 ### Home Page-
 This page displays all the movies and users can click on the movie and give ratings and add them to list or can see the cast and crew of the movie. 
 
-<img src="Images/Home-Screen.png" alt="video call welcome screen" width="700"/>
+<img src="images/Home-screen.png" alt="video call welcome screen" width="700"/>
 
 ### Get Recommendations-
 Registered users will get some recommendations based on the rating given by them by clicking on the button 'Get Recommendation' to get some recommendations.
 
-<img src="Images/recommendation-Window.png" alt="blank chat window" width="700"/>
+<img src="images/recommendation-window.png" alt="blank chat window" width="700"/>
 
 
 <!-- FUTURE SCOPE -->
