@@ -1,0 +1,126 @@
+/* .navbar{
+	border-radius: 0;
+	min-height: 80px;
+} */
+/* .container-fluid{
+	margin-top: 18px;
+} */
+/* .navbar-nav>li>a{
+	font-size: 18px;
+}
+.navbar-brand{
+	font-size: 22px;
+	font-family: inherit;
+	font-style: italic;
+	font-weight: 700;
+} */
+
+element.style {
+  background-color: #072d4e;
+}
+
+.thumbnail h4,
+.thumbnail p {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.star-rating {
+  line-height: 32px;
+  font-size: 1.25em;
+}
+
+.star-rating .fa-star {
+  color: yellow;
+}
+
+.heart-rating {
+  line-height: 32px;
+  font-size: 1.25em;
+  margin-left: -33px;
+}
+
+.heart-rating .fa-heart {
+  color: yellow;
+}
+
+.button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px;
+  cursor: pointer;
+  margin-left: 45px;
+}
+
+.button1 {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: -4px;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.bg-navbar {
+  background-color: #101010;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #00bcd4;
+}
+/* .navbar-inverse .navbar-nav > li > a {
+  color: #fff;
+} */
+/* h2 {
+  margin-left: 60px;
+} */
+
+#social-fb:hover {
+  color: #3b5998;
+}
+#social-tw:hover {
+  color: #4099ff;
+}
+
+#social-em:hover {
+  color: #f39c12;
+}
+#social-git:hover {
+  color: black;
+}
+* {
+  margin: 0;
+}
+/* html,
+body {
+  height: 100%;
+} */
+.wrapper {
+  min-height: 100%;
+  height: 100%;
+  margin: 0 auto -155px; /* the bottom margin is the negative value of the footer's height */
+}
+.footer,
+.push {
+  height: 155px; /* .push must be the same height as .footer */
+}
+
+/*.row.display-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.thumbnail {
+  height: 100%;
+}*/

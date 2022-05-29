@@ -1,0 +1,40 @@
+{% extends 'base/base.html'%}
+{% block title %}Log In{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="../static/css/login.css">
+<div class="container">
+    <div class="frame">
+        <div class="nav">
+           <h1>Log In</h1>
+            </div>
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                   <div>
+                       <form class="form-signin" action="#" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <!-- username -->
+                        <label  for="id_username">
+                            Username:
+                        </label>
+                        <input class="form-styling" id="id_username" type="text" name="username" placeholder="" autocomplete="off" /> 
+                        <!-- password -->
+                        <label for="id_password">
+                            Password:
+                        </label>
+                        <input id="id_password"  name="password" type="password" class="form-styling" autocomplete="off">
+                        <!-- login link -->
+                        <div class="btn-animate">
+                             <button class="btn-signin" type="submit">Login to your account</button> 
+                        </div>
+                       </form>
+                   </div>
+                   <div class="forgot"> Don't have an account? <a href="{% url 'signup' %}">Click here</a> to register. </div>
+               
+        
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% with request.resolver_match.url_name as URL_NAME %}
+<link rel="stylesheet" href="../../static/css/navbar.css">
+<nav class="navbar navbar-expand-lg bg-navbar navbar-inverse navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" style="color: #fff;" href="/">My Recommender</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link{% if URL_NAME == 'index' %} active{% endif %}" href="{% url 'movies:index' %}">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link{% if URL_NAME == 'movie_watchlist' %} active{% endif %}" href="{% url 'movies:movie_watchlist' %}"> Watchlist</a>
+        </li>
+
+      </ul>
+      <ul class="navbar-nav">
+        {% if not request.user.is_authenticated %}
+          <li class="nav-item">
+            <a href="{% url 'signup' %}" class="nav-link{% if URL_NAME == 'signup' %} active{% endif %}">
+              <span aria-hidden="true">SignUp</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'login' %}" class="nav-link{% if URL_NAME == 'login' %} active{% endif %}">
+              <span aria-hidden="true">Login</span>
+            </a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a href="{% url 'logout' %}" class="nav-link{% if URL_NAME == 'logout' %} active{% endif %}">
+              <span aria-hidden="true">Logout</span>
+            </a>
+          </li>
+        {% endif %}
+
+      </ul>
+    </div>
+  </div>
+</nav>
+{% endwith %}

@@ -1,0 +1,39 @@
+{% extends 'base/base.html'%}
+{% block title %}Register{% endblock %}
+{% block body %}
+<link rel="stylesheet" href="../static/css/signup.css">
+  <div class="container">
+
+    <div class="frame">
+      
+            <div class="nav">
+              <h1>Register for an Account</h1>
+               </div>
+            
+            {% if error_message %}
+              <p>
+                <strong>{{ error_message }}</strong>
+              </p>
+            {% endif %}
+            <div>
+              <form  class="form-signin" role="form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% include 'partials/form_template.html' %}
+                 
+                <div class="btn-animate">
+                  <button class="btn-signin" type="submit">Login to your account</button> 
+             </div>
+              </form>
+            </div>
+           
+          <div class="forgot">
+            Already have an account?
+            <a href="{% url 'login' %}">Click here</a>
+            to log in.
+          </div>
+       
+    </div>
+
+  </div>
+
+{% endblock %}

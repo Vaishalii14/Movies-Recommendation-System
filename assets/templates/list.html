@@ -1,0 +1,63 @@
+{% extends 'base/base.html'%}
+{% block body %}
+
+  {% if not request.user.is_authenticated %}
+    <br>
+  {% else %}
+    <h2 style="color:#fff" class="text-center">Welcome
+      {{user.username}}!!</h2>
+  {% endif %}
+
+  <div class="container">
+    <div class="col-xs-6 col-xs-offset-3">
+      <form class="row" role="search" method="get">
+
+        <div class="input-group mb-3 input-group-lg">
+          <input style="margin-left: -45px; " type="text" class="form-control" placeholder="Search movies" aria-label="Search Movies" aria-describedby="search-btn" name="q" value="{{ request.GET.q }}">
+          <button class="btn btn-success" style="background-color: black;" type="submit" id="search-btn">Search</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+  <p class="text-start">
+    <span style="float:right;">
+      <a href="{% url 'movies:recommend_movies' %}" class="btn">
+        <button style="color:white; background-color: black;padding:10px">Get Movie Recommendation</button>
+      </a>
+      <h2 style="color: white; text-align: center;">Movie List</h2>
+    </span>
+  </p>
+  <hr>
+  <br>
+
+  <!-- Movie list -->
+  <div class="row">
+    {% if object_list %}
+      {% for movie in object_list %}
+        <div class="col-sm-2 col-md-2">
+          <div class="thumbnail" style="border-radius: 22px 22px 22px 22px;">
+
+            <h6 class="text-center text-light" style="margin-left:-40px";>{{movie.title}}</h6>
+
+            <a href="{% url 'movies:movie_detail' movie.pk %}">
+              <img src="{{ movie.get_image}}" class="img-fluid" style="border-radius: 22px ; width: 250px; padding-bottom: 30px;">
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  {% if page_obj %}
+    <div class="row mt-3">
+      {% include 'partials/pagination.html' %}
+
+    </div>
+  {% endif %}
+
+</div>
+
+{% endblock %}

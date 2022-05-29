@@ -1,0 +1,13 @@
+.navbar-brand{
+    color: pink;
+    font-size: 27px;
+
+}
+
+a{
+    color: pink;
+}
+
+.navbar-brand:hover{
+    color:pink
+}

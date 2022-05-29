@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>
+      {% block title %}Movies{% endblock title %}
+    </title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'vendors/bootstrap/css/bootstrap.min.css' %}">
+    <!-- <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'> -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='{% static "css/base.css" %}'/>
+
+    <style type="text/css"></style>
+  </head>
+  <!-- #052642 -->
+  <body style="background-color:#29bdc1">
+    {% include 'partials/navbar.html' %}
+    <div class="container-fluid mt-5">
+      {% block body %}{% endblock %}
+
+    </div>
+
+    <script type="text/javascript" src="{% static 'vendors/jquery/jquery.min.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'vendors/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script type="text/javascript">
+      var $star_rating = $('.star-rating .fa');
+
+      var SetRatingStar = function () {
+        return $star_rating.each(function () {
+          if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+            return $(this)
+              .removeClass('fa-star-o')
+              .addClass('fa-star');
+          } else {
+            return $(this)
+              .removeClass('fa-star')
+              .addClass('fa-star-o');
+          }
+        });
+      };
+
+      $star_rating.on('click', function () {
+        $star_rating
+          .siblings('input.rating-value')
+          .val($(this).data('rating'));
+        return SetRatingStar();
+      });
+
+      SetRatingStar();
+      $(document).ready(function () {});
+    </script>
+
+
+  </body>
+
+</html>
