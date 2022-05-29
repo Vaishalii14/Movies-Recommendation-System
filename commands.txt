@@ -1,0 +1,11 @@
+python manage.py makemigrations
+
+python manage.py migrate
+
+python manage.py runserver
+
+python manage.py runserver 0.0.0.0:80
+
+python -Xutf8 manage.py dumpdata accounts movies > data.json
+
+python manage.py loaddata data.json
